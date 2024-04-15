@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import time
+import random
 from datetime import timedelta, timezone
 from threading import Thread
 
@@ -144,7 +145,7 @@ def list_sities_handler_client(message):
 
 def list_value_notifications(user_id):
     """
-    Возвращает выбранные пользователем параметры при добавлении уведомлений: город, дни, время
+    Возвращает выбранные пользователем параметры при добавлении уведомления: город, дни, время
     """
 
     dictionary_days_week = {
@@ -282,7 +283,14 @@ def get_weather(user_id, message_id, chat_id, city_name, call_type="message"):
             utc = ""
 
         if list_settings[10]:
-            image = '<a href="https://i.ibb.co/LdpmHR0/photo-2023-10-28-19-33-08.jpg">&#8205;</a>'
+            dictionary_image = {
+                0: '<a href="https://i.ibb.co/SvHGvxr/eec5a7a0f98c4f4aba6fa4d0c2ec28d9.jpg">&#8205;</a>',
+                1: '<a href="https://i.ibb.co/XjPrBFz/d756f46eef6847e784a23176d345e12f.jpg">&#8205;</a>',
+                2: '<a href="https://i.ibb.co/6my67WN/4904f2db0ead4345bbd00183f4e81755.jpg">&#8205;</a>',
+                3: '<a href="https://i.ibb.co/XVqWgnZ/18b8240759f24fdaa1ddb3b6b530caf8.jpg">&#8205;</a>',
+                4: '<a href="https://i.ibb.co/61hW7wx/4be71bf639a745afb2e222935b26a268.jpg">&#8205;</a>',
+            }
+            image = dictionary_image.get(random.randint(0, 4))
         else:
             image = ""
 
